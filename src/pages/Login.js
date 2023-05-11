@@ -3,7 +3,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginModule.css";
 import api from "../apis/register";
+import useAuth from "../hooks/useAuth";
+
 function Login() {
+  const { setAuth, auth } = useAuth();
+
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -36,14 +40,22 @@ function Login() {
       api
         .login(user)
         .then((response) => {
-          if (response.data.status === "logged!") {
-            setErr("Logged");
-            popup();
-          } else {
-            setErr("Invalid credentials");
-          }
+          console.log("Response data:", response.data);
+          const accessToken = response.accessToken;
+          const userRole = response.roles;
+          console.log("Login: " + "AccessToken: " + accessToken);
+          console.log("Roles: " + userRole);
+
+          setAuth({ token: accessToken, userRole });
+
+          console.log(
+            "Auth state after setting:",
+            JSON.stringify(auth, null, 2)
+          );
+          navigate("/CreateExercise");
+          console.log("All done");
         })
-        .catch((err) => setErr("Invalid credentials"));
+        .catch((err) => setErr("Ivalid credentials"));
     }
   };
 
@@ -59,7 +71,7 @@ function Login() {
 
   return (
     <form onSubmit={(e) => onSubmit(e)} className="cover">
-      <h1>Login</h1>
+      <h1>Email</h1>
       <input
         id="email"
         name="email"

@@ -1,23 +1,6 @@
 import React, { useState } from "react";
 import InputExercise from "../components/InputExercise.js";
-
-function Exercises() {
-  // This data is only present for demo purposes. Usually you obtain this through the backend.
-  const exerciseData = [
-    {
-      id: 1,
-      title: "Push ups",
-    },
-    {
-      id: 2,
-      title: "Bench press",
-    },
-    {
-      id: 3,
-      title: "Squad",
-    },
-  ];
-
+function Exercises(exer) {
   const [exercises, setExercises] = useState(exerciseData);
 
   const addItem = (title) => {
@@ -30,7 +13,7 @@ function Exercises() {
 
   return (
     <div className="container">
-      <div className="inner">{/* <ExercisesPage addItem={addItem} /> */}</div>
+      <div className="inner">{<exercises />}</div>
     </div>
   );
 }

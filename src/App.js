@@ -1,19 +1,28 @@
 import "./App.css";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
-import ExercisesPage from "./pages/ExercisesPage.js";
+import CreateExercise from "./pages/CreateExercise";
 import Login from "./pages/Login.js";
 import Register from "./pages/Register.js";
+import Forbidden from "./pages/Forbidden/Forbidden";
 import NavBar from "./components/NavBar";
+import { AuthProvider } from "./context/AuthProvider";
+import PersistLogin from "../src/pages/PersistLogin";
 function App() {
   return (
     <div className="App">
       <Router>
         <NavBar />
-        <Routes>
-          <Route path="/exercises" element={<ExercisesPage />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Register" element={<Register />} />
-        </Routes>
+        <AuthProvider>
+          <Routes>
+            <Route path="/Login" element={<Login />} />
+            <Route path="/Register" element={<Register />} />
+
+            <Route element={<PersistLogin />}>
+              <Route path="/CreateExercise" element={<CreateExercise />} />
+            </Route>
+            <Route path="/Forbidden" element={<Forbidden />} />
+          </Routes>
+        </AuthProvider>
       </Router>
     </div>
   );

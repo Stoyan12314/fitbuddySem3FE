@@ -47,6 +47,7 @@ function Login() {
   };
 
   return (
+    //have this code in a component and use it twice and so on...//
     <form onSubmit={(e) => onSubmit(e)} className="cover">
       <h1>Email</h1>
       <input
@@ -100,11 +101,10 @@ function Login() {
         Register
       </button>
 
-      {/* <div className="alt-register"> */}
       <button className="login-btn" onClick={redirectToLogin}>
         Login
       </button>
-      {/* </div> */}
+
       <div className={popupStyle}>
         <h3>{err}</h3>
       </div>

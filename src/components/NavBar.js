@@ -1,25 +1,15 @@
 import React from "react";
 import styles from "./NavBar.module.css";
 import { NavLink } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import setNavigation from "../apis/navigationManager";
 
 function NavBar() {
-  const links = [
-    {
-      id: 1,
-      path: "/Login",
-      text: "Login",
-    },
-    {
-      id: 2,
-      path: "/ExercisesPage",
-      text: "Exercises",
-    },
-    {
-      id: 3,
-      path: "/Register",
-      text: "Register",
-    },
-  ];
+  var links = [];
+  const { auth } = useAuth();
+  const role = auth.roles;
+  console.log("Roles use auth:" + role);
+  links = setNavigation(role);
 
   return (
     <nav className={styles.navBar}>
