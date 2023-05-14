@@ -1,7 +1,8 @@
 import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./LoginModule.css";
+import styles from "./Login.module.css";
+
 import api from "../apis/register";
 import useAuth from "../hooks/useAuth";
 
@@ -40,20 +41,14 @@ function Login() {
       api
         .login(user)
         .then((response) => {
-          console.log("Response data:", response.data);
           const accessToken = response.accessToken;
-          const userRole = response.roles;
-          console.log("Login: " + "AccessToken: " + accessToken);
-          console.log("Roles: " + userRole);
-
-          setAuth({ token: accessToken, userRole });
-
-          console.log(
-            "Auth state after setting:",
-            JSON.stringify(auth, null, 2)
-          );
-          navigate("/CreateExercise");
-          console.log("All done");
+          const roles = response.roles;
+          const id = response.userId;
+          console.log("User id" + id);
+          setErr("Login Succesffull");
+          //set authentication context
+          setAuth({ roles, accessToken, id });
+          navigate("/OverviewExercises");
         })
         .catch((err) => setErr("Ivalid credentials"));
     }
@@ -70,7 +65,7 @@ function Login() {
   };
 
   return (
-    <form onSubmit={(e) => onSubmit(e)} className="cover">
+    <form onSubmit={(e) => onSubmit(e)} className={styles.cover}>
       <h1>Email</h1>
       <input
         id="email"
@@ -90,19 +85,31 @@ function Login() {
         onChange={onInputChange}
       />
 
-      <button className="login-btn" type="submit">
+      {/* <button className="login-btn" type="submit">
+        Login
+      </button> */}
+      <button className={styles["login-btn"]} type="submit">
         Login
       </button>
 
-      <div className="alt-register">
+      {/* <div className="alt-register">
         <div className="login-btn" onClick={redirectToRegister}>
+          Register
+        </div>
+      </div> */}
+      <div className={styles["alt-register"]}>
+        <div className={styles["login-btn"]} onClick={redirectToRegister}>
           Register
         </div>
       </div>
 
-      <div className={popupStyle}>
+      <div className={`${styles.popupStyle} ${popupStyle}`}>
         <h3>{err}</h3>
       </div>
+
+      {/* <div className={popupStyle}>
+        <h3>{err}</h3>
+      </div>  */}
     </form>
   );
 }

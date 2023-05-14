@@ -15,6 +15,6 @@ function ExercisesPage() {
 
   if (!exercise) return <div>No exercises</div>;
 
-  return <ExercisesList ExercisesList={exercise.exercise} />;
+  return <ExercisesList exercises={exercise.exercises} />;
 }
 export default ExercisesPage;

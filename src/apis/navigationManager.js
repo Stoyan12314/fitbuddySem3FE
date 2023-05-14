@@ -1,6 +1,6 @@
 var navigation = [];
 const setNavigation = (role) => {
-  console.log("Role: " + role);
+  console.log("Role in Set Navigation: " + role);
   if (!role) {
     navigation = [
       {
@@ -20,23 +20,18 @@ const setNavigation = (role) => {
         navigation = [
           {
             id: 1,
-            path: "/users",
-            text: "Users",
-          },
-          {
-            id: 2,
             path: "/CreateExercise",
             text: "CreateExercise",
           },
           {
-            id: 3,
-            path: "Chatroom",
-            text: "Chatroom",
-          },
-          {
-            id: 4,
+            id: 2,
             path: "/Logout",
             text: "Logout",
+          },
+          {
+            id: 3,
+            path: "/OverviewExercises",
+            text: "OverviewExercises",
           },
         ];
         break;
@@ -48,13 +43,9 @@ const setNavigation = (role) => {
             path: "/Exercises",
             text: "Exercises",
           },
+
           {
             id: 2,
-            path: "Chatroom",
-            text: "Chatroom",
-          },
-          {
-            id: 3,
             path: "/Logout",
             text: "Logout",
           },
@@ -68,13 +59,9 @@ const setNavigation = (role) => {
             path: "/Exercises",
             text: "exercises",
           },
+
           {
             id: 2,
-            path: "Chatroom",
-            text: "Chatroom",
-          },
-          {
-            id: 3,
             path: "/Logout",
             text: "Logout",
           },
@@ -85,23 +72,28 @@ const setNavigation = (role) => {
         navigation = [
           {
             id: 1,
-            path: "/Exercises",
-            text: "Exercises",
-          },
-          {
-            id: 2,
-            path: "CreateExercise",
+            path: "/CreateExercise",
             text: "Create Exercise",
           },
           {
-            id: 3,
-            path: "/login",
+            id: 2,
+            path: "/Login",
             text: "Login",
           },
           {
-            id: 4,
+            id: 3,
             path: "/Register",
             text: "Register",
+          },
+          {
+            id: 4,
+            path: "/Logout",
+            text: "Logout",
+          },
+          {
+            id: 5,
+            path: "/OverviewExercises",
+            text: "OverviewExercises",
           },
         ];
     }

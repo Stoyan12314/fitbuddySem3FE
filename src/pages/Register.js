@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./LoginModule.css";
+import styles from "./Login.module.css"; // Import the CSS module
 import api from "../apis/register";
 
 function Login() {
@@ -48,7 +48,7 @@ function Login() {
 
   return (
     //have this code in a component and use it twice and so on...//
-    <form onSubmit={(e) => onSubmit(e)} className="cover">
+    <form onSubmit={(e) => onSubmit(e)} className={styles.cover}>
       <h1>Email</h1>
       <input
         id="email"
@@ -97,11 +97,11 @@ function Login() {
         </select>
       </div>
 
-      <button className="login-btn" type="submit">
+      <button className={styles["login-btn"]} type="submit">
         Register
       </button>
 
-      <button className="login-btn" onClick={redirectToLogin}>
+      <button className={styles["login-btn"]} onClick={redirectToLogin}>
         Login
       </button>
 

@@ -1,4 +1,4 @@
- 
+/*  
 .navBar {
     overflow-y: scroll;
     list-style: none;
@@ -25,4 +25,38 @@
   
   .menuNav li:first-child {
     margin-top: 7rem;
-  }
+  } */
+
+
+ 
+  .navBar {
+    list-style: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgb(32,177, 255); 
+    z-index: 9;
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 0.1em 1.330em rgb(100,156,156);
+}
+
+.navBar li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.navBar a {
+    display: block;
+    padding: 10px 40px;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navBar a:hover {
+    color: lightskyblue;
+}

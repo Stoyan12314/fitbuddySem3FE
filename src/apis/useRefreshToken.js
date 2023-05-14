@@ -7,9 +7,9 @@ const useRefreshToken = () => {
   const refresh = () => {
     const token = JSON.parse(localStorage.getItem("accessToken"));
     const userRole = JSON.parse(localStorage.getItem("roles"));
-
-    if (token && userRole) {
-      setAuth({ token, userRole });
+    const id = JSON.parse(localStorage.getItem("id"));
+    if (token && userRole && id) {
+      setAuth({ token, userRole, id });
       return token;
     }
   };

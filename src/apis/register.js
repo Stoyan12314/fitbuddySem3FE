@@ -14,11 +14,12 @@ const login = (user) => {
           JSON.stringify(response.data.accessToken)
         );
         localStorage.setItem("roles", JSON.stringify(response.data.roles));
-
+        localStorage.setItem("id", JSON.stringify(response.data.userId));
         console.log(
           "User data in local storage:",
           localStorage.getItem("accessToken"),
-          localStorage.getItem("roles")
+          localStorage.getItem("roles"),
+          localStorage.getItem("id")
         );
       }
       return response.data;
@@ -30,7 +31,8 @@ const login = (user) => {
 };
 
 const logout = () => {
-  localStorage.removeItem("user");
+  localStorage.removeItem("accessToken");
+  localStorage.removeItem("roles");
 };
 const Service = {
   register,
