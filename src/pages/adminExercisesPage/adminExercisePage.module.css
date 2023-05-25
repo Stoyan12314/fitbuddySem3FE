@@ -1,0 +1,58 @@
+/* adminExercisePage.module.css */
+
+.containerAdmin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    padding: 2rem;
+    border-radius: 1em;
+    box-shadow: 0 0.1em 1.330em rgb(100,156,156);
+}
+
+.imgAdmin {
+    width: 30%;
+    height: auto;
+    margin-bottom: 2rem;
+}
+
+.formAdmin {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.labelAdmin {
+    margin-bottom: 1rem;
+}
+
+.inputAdmin {
+    border: none;
+    background-color: rgb(229,226,226);
+    height: 2em;
+    border-radius: 0.25em;
+    text-align: center;
+    padding: 0.5em;
+    margin-bottom: 1rem;
+}
+
+input:focus {
+    outline-color: rgb(32,177,255);
+}
+
+.buttonAdmin {
+    width: 30%;
+    height: 2.5em;
+    background-color: rgb(32,177, 255);
+    color: white;
+    border: none;
+    border-radius: 0.25em;
+    cursor: pointer;
+    margin-top: 1rem;
+    align-self: center;
+}
+
+button:hover {
+    transform: scale(1.2); 
+}

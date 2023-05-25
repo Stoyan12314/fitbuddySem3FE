@@ -14,5 +14,6 @@ const deleteRequest = (id) => {
 const Service = {
   getUserExercises,
   createRequest,
+  deleteRequest,
 };
 export default Service;

@@ -11,11 +11,11 @@ import PersistLogin from "../src/pages/PersistLogin";
 import OverviewExercises from "../src/pages/OverviewExercises";
 import ExercisePage from "./pages/assignWoekoutPage/ExercisesPage";
 import PrivateRoute from "./pages/PrivateRoute";
+import AdminExercisePage from "./pages/adminExercisesPage/AdminExercisePage";
 function App() {
   return (
     <div className="App">
       <Router>
-        {/* <AuthProvider> */}
         <NavBar />
         <Routes>
           <Route path="/Login" element={<Login />} />
@@ -23,16 +23,17 @@ function App() {
 
           <Route path="/Logout" element={<Logout />} />
 
-          {/* <Route element={<PersistLogin />}> */}
           <Route path="/CreateExercise" element={<CreateExercise />} />
           <Route path="/ExercisePage/:id" element={<ExercisePage />} />
+          <Route
+            path="/AdminExercisePage/:id"
+            element={<AdminExercisePage />}
+          />
 
           <Route path="/OverviewExercises" element={<OverviewExercises />} />
-          {/* </Route> */}
 
           <Route path="/Forbidden" element={<Forbidden />} />
         </Routes>
-        {/* </AuthProvider> */}
       </Router>
     </div>
   );

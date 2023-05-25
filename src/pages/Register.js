@@ -36,12 +36,16 @@ function Login() {
 
     api
       .register(user)
-
       .then((response) => {
         navigate("/Login");
       })
       .catch((err) => {
-        setErr("All fields must be filled in. Please, try again.");
+        console.log(err);
+        if (err.response && err.response.status === 409) {
+          setErr("This email is already in use. Please use a different email.");
+        } else {
+          setErr("All fields must be filled in. Please, try again.");
+        }
         popup();
       });
   };

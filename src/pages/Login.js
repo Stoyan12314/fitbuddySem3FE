@@ -1,22 +1,24 @@
-import { useHistory } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 
 import api from "../apis/register";
 import useAuth from "../hooks/useAuth";
-
 function Login() {
   const { setAuth, auth } = useAuth();
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    if (auth.accessToken) {
+      navigate("/OverviewExercises");
+    }
+  }, [auth, navigate]);
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
   const [err, setErr] = useState("");
   const { email, password } = user;
-
-  const navigate = useNavigate();
 
   const [errorEmail, setErrorEmail] = useState(false);
 
@@ -74,6 +76,7 @@ function Login() {
         placeholder="Enter Email"
         value={email}
         onChange={onInputChange}
+        className="email-input"
       />
       <h1>Password</h1>
       <input
