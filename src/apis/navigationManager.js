@@ -33,6 +33,11 @@ const setNavigation = (role) => {
             path: "/OverviewExercises",
             text: "OverviewExercises",
           },
+          {
+            id: 4,
+            path: "/statisticsPage",
+            text: "statistics",
+          },
         ];
         break;
 
@@ -40,12 +45,27 @@ const setNavigation = (role) => {
         navigation = [
           {
             id: 1,
-            path: "/Exercises",
+            path: "/OverviewExercises",
             text: "Exercises",
+          },
+          {
+            id: 2,
+            path: "/StatisticsPageCus",
+            text: "Statistics",
           },
 
           {
-            id: 2,
+            id: 3,
+            path: "/customerPage",
+            text: "chat",
+          },
+          {
+            id: 4,
+            path: "/userExercises",
+            text: "Schedule",
+          },
+          {
+            id: 5,
             path: "/Logout",
             text: "Logout",
           },
@@ -56,12 +76,16 @@ const setNavigation = (role) => {
         navigation = [
           {
             id: 1,
-            path: "/Exercises",
-            text: "exercises",
+            path: "/UserList",
+            text: "chat",
           },
-
           {
             id: 2,
+            path: "/userListAssign",
+            text: "User Exercises",
+          },
+          {
+            id: 3,
             path: "/Logout",
             text: "Logout",
           },

@@ -1,4 +1,5 @@
 import api from "./http-common";
+import authHeader from "./auth-header";
 
 const register = (data) => {
   return api.post(`/register`, data);
@@ -34,9 +35,53 @@ const logout = () => {
   localStorage.removeItem("accessToken");
   localStorage.removeItem("roles");
 };
+
+const getAllUsers = (page = 0, size = 10) => {
+  const headers = {
+    "Content-Type": "application/json",
+    ...authHeader(),
+  };
+
+  return api
+    .get(`/users`, { headers: headers, params: { page, size } })
+    .then((response) => response.data)
+    .catch((error) => {
+      console.error("Error during getting all users:", error);
+      throw error;
+    });
+};
+
+const getUsersByEmail = (email, page, size) => {
+  const headers = {
+    "Content-Type": "application/json",
+    ...authHeader(),
+  };
+
+  return api
+    .get(`/users/getUsers`, { headers: headers, params: { email, page, size } })
+    .then((response) => response.data)
+    .catch((error) => {
+      console.error("Error during getting users by email:", error);
+      throw error;
+    });
+};
+const getUser = (id) => {
+  return api
+    .get(`/users/${id}`)
+    .then((response) => response.data)
+    .catch((error) => {
+      console.error("Error during getting user:", error);
+      throw error;
+    });
+};
+
 const Service = {
+  getUsersByEmail,
   register,
   login,
   logout,
+  getAllUsers,
+  getUser,
 };
+
 export default Service;

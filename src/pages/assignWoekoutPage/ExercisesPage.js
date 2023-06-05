@@ -19,7 +19,7 @@ function Exercises() {
   const [popupStyle, showPopup] = useState("hide");
   const [loading, setLoading] = useState(true);
 
-  const { weight, reps } = exerciseData;
+  const { exerciseId, weight, reps } = exerciseData;
 
   useEffect(() => {
     setExerciseData((prevData) => ({
@@ -28,8 +28,9 @@ function Exercises() {
       date: new Date(),
     }));
     console.log("Auth before getting the exercises" + auth?.id);
+    console.log("Exercise id " + exerciseId);
     api
-      .getUserExercises(auth?.id)
+      .getUserExercises(auth?.id, exerciseId)
       .then((response) => {
         if (response.data && Array.isArray(response.data.request)) {
           setRequests(response.data.request);
@@ -54,7 +55,12 @@ function Exercises() {
   };
 
   const onSubmit = (e) => {
+    console.log("User id is " + id);
     e.preventDefault();
+    if (!weight || !reps) {
+      setErr("Weight and reps fields cannot be empty");
+      return;
+    }
     console.log("User id" + auth.id);
     const updatedExerciseData = {
       ...exerciseData,
@@ -67,7 +73,7 @@ function Exercises() {
       .then((response) => {
         if (response.data.id) {
           console.log("User id before getting the exercises" + auth.id);
-          return api.getUserExercises(auth.id);
+          return api.getUserExercises(auth.id, exerciseId);
         } else {
           throw new Error("An error occurred while creating the request.");
         }
@@ -154,6 +160,7 @@ function Exercises() {
             min="0"
             onChange={onInputChange}
             className={styles.inputBox}
+            required
           />
         </div>
         <div className={styles.inputContainer}>
@@ -168,6 +175,7 @@ function Exercises() {
             min="0"
             onChange={onInputChange}
             className={styles.inputBox}
+            required
           />
         </div>
         <button className={styles.exerciseBtn} type="submit">

@@ -1,4 +1,4 @@
-* {
+/* * {
     margin:0;
     box-sizing: border-box;
 }
@@ -32,4 +32,47 @@
 .exercises-list li h3, .exercises-list li p {
     margin: 0.5em 0;
 }
+ */
 
+
+ * {
+    margin:0;
+    box-sizing: border-box;
+}
+
+.exercises-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 0;
+    list-style: none;
+}
+
+.exercises-list li {
+    background-color: white;
+    border-radius: 0.25em;
+    box-shadow: 0 0.1em 1.33em rgb(100, 156, 156);
+    padding: 1em;
+    margin: 1.5rem 1.5rem 1.5rem 1.5rem;
+    transition: 0.5s;
+}
+
+.exercises-list li:hover {
+    transform: scale(1.02);
+}
+
+.exercises-list li img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.25em;
+}
+
+.exercises-list li h3, .exercises-list li p {
+    margin: 0.5em 0;
+}
+
+.exercise-link {
+    text-decoration: none;
+    color: inherit;
+    display: block; /* make the link occupy the whole space of the li */
+}

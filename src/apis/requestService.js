@@ -1,8 +1,8 @@
 import authHeader from "./auth-header";
 import api from "./http-common";
 
-const getUserExercises = (id) => {
-  return api.get(`/request/${id}`);
+const getUserExercises = (userId, exerciseId) => {
+  return api.get(`/request/${userId}/exercises/${exerciseId}`);
 };
 const createRequest = (request) => {
   return api.post("/request", request, { headers: authHeader() });

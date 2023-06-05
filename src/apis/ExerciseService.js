@@ -4,12 +4,27 @@ const get = (id) => {
   return api.get(`/exercises/${id}`);
 };
 
-const getAll = () => {
-  return api.get("/exercises");
-};
+const getExercisesByName = (name, page, size) => {
+  const headers = {
+    "Content-Type": "application/json",
+    ...authHeader(),
+  };
 
+  let url = `/exercises?page=${page}&size=${size}`;
+
+  if (name) {
+    url += `&name=${name}`;
+  }
+
+  return api.get(url, { headers: headers });
+};
 const deleteExercise = (id) => {
-  return api.delete(`/exercises/${id}`);
+  return api.delete(`/exercises/${id}`, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      ...authHeader(),
+    },
+  });
 };
 
 const updateExercise = (exerciseId, data) => {
@@ -34,7 +49,7 @@ const Service = {
   deleteExercise,
   updateExercise,
   get,
-  getAll,
+  getExercisesByName,
   createExercise,
 };
 export default Service;

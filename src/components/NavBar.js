@@ -7,7 +7,6 @@ import setNavigation from "../apis/navigationManager";
 function NavBar() {
   var links = [];
   const { auth } = useAuth();
-  // const role = auth?.roles || [];
   const role = auth.roles;
   console.log("Roles use auth:" + role);
   links = setNavigation(role);
